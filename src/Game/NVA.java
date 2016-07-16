@@ -31,11 +31,11 @@ public class NVA {
             playerType = PlayNVA.scanner.nextLine();
 
             if (playerType.equalsIgnoreCase("ninja")) {
-                System.out.println("Noble choice, the Ninja is stealthy and fast.");
+                System.out.println("Noble choice, the Ninja is the spirit animal of a Jaguar");
             } else if (playerType.equalsIgnoreCase("alien")) {
-                System.out.println("Powerful choice, the Alien is scary and strong.");
+                System.out.println("Powerful choice, the Alien is like Derek");
             } else {
-                System.out.println("Invalid player type.");
+                System.out.println("Choose again Dipshit");
             }
         }
     }
@@ -50,15 +50,15 @@ public class NVA {
             }
             weapon = PlayNVA.scanner.nextLine();
             if (playerType.equalsIgnoreCase("ninja") && weapon.equalsIgnoreCase("blade")) {
-                System.out.println("The ninja blade is close range, but deals more damage");
+                System.out.println("As Ninja uses blade you become like avocado");
             } else if (playerType.equalsIgnoreCase("ninja") && weapon.equalsIgnoreCase("star")) {
-                System.out.println("The ninja star does less damage, but you can snipe from way the fuck back there");
+                System.out.println("The ninja star does less damage, but you can snipe from the treetops or asteroids");
             } else if (playerType.equalsIgnoreCase("alien") && weapon.equalsIgnoreCase("claw")) {
-                System.out.println("The alien claw is close range but really fucks shit up");
+                System.out.println("The alien claw is close range but tears enemies to shred");
             } else if (playerType.equalsIgnoreCase("alien") && weapon.equalsIgnoreCase("laser")) {
-                System.out.println("The alien laser is GG");
+                System.out.println("The alien laser is GG (alien walks away) ");
             } else {
-                System.out.println("choose again dipshit.");
+                System.out.println("Choose again dipshit.");
             }
         }
     }
@@ -68,11 +68,11 @@ public class NVA {
             System.out.println("Choose your location? [forest/space]");
             location = PlayNVA.scanner.nextLine();
             if (location.equalsIgnoreCase("space")) {
-                System.out.println("Space gives the alien a huge strength advantage.");
+                System.out.println("Aliens are the alpha masters of Space beware their raw strength!!!");
             } else if (location.equalsIgnoreCase("forest")) {
-                System.out.println("The forest gives the ninja a slight stealth advantage");
+                System.out.println("In the forest ninja can be anywhere....");
             } else {
-                System.out.println("choose again dipshit");
+                System.out.println("Choose again dipshit");
             }
         }
     }
@@ -89,7 +89,7 @@ public class NVA {
             } else if (special.equalsIgnoreCase("pain")) {
                 System.out.println("Pain has a small change of inflicting a permanent penalty on the opponent, decreasing their overall effectiveness by 10%.");
             } else {
-                System.out.println("choose again dipshit");
+                System.out.println("Choose again dipshit");
             }
 
         }
@@ -98,22 +98,30 @@ public class NVA {
         if(playerType.equalsIgnoreCase("ninja")) {
             ninja.setPlayerName(name);
             ninja.setPlayerWeapon(weapon);
+            ninja.setBattleLocation(location);
+            ninja.setSpecialGift(special);
             alien.setPlayerName("Twinkle Toes");
             alien.setPlayerWeapon("laser");
+            alien.setBattleLocation(location);
+            alien.setSpecialGift(special);
         } else {
             alien.setPlayerName(name);
             alien.setPlayerWeapon(weapon);
+            alien.setBattleLocation(location);
+            alien.setSpecialGift(special);
             ninja.setPlayerName("Mr Fuzzy Jingles");
             ninja.setPlayerWeapon("star");
+            ninja.setBattleLocation(location);
+            ninja.setSpecialGift(special);
         }
         System.out.println(" ");
         System.out.println("****************");
         System.out.println("Time to play!");
         System.out.println(" ");
         while(alien.getHealth() > 0 && ninja.getHealth() > 0) {
-            int alienDamageRecieved = alien.alienDamageRecievedCalculator(ninja.ninjaDamageGivenCalculator());
-            System.out.println(ninja.getPlayerName()+" attacks with the "+ninja.getPlayerWeapon()+" and deals "+alienDamageRecieved+" points of damage.");
-            int ninjaDamageReceived = ninja.ninjaDamageRecievedCalculator(alien.alienDamageGivenCalculator());
+            int alienDamageReceived = alien.alienDamageReceivedCalculator(ninja.ninjaDamageGivenCalculator());
+            System.out.println(ninja.getPlayerName()+" attacks with the "+ninja.getPlayerWeapon()+" and deals "+alienDamageReceived+" points of damage.");
+            int ninjaDamageReceived = ninja.ninjaDamageReceivedCalculator(alien.alienDamageGivenCalculator());
             System.out.println(alien.getPlayerName()+" attacks with the " + alien.getPlayerWeapon()+" and deals " + ninjaDamageReceived+" points of damage.");
             System.out.println(ninja.getPlayerName()+" Health: "+ninja.getHealth()+" vs "+alien.getPlayerName()+" Health: "+alien.getHealth());
 

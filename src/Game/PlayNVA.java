@@ -20,6 +20,7 @@ public class PlayNVA {
         nva.setLocationType();
         nva.setSpecial();
         nva.startBattle();
+        Scanner scanner = new Scanner(System.in);
     }
 }
 
