@@ -2,11 +2,12 @@ package Game;
 
 import Game.Players.Alien;
 import Game.Players.Ninja;
+import Game.Players.Player;
 
 /**
  * Created by Justin on 7/11/16.
  */
-public class NVA {
+public class NVA extends Player {
 
 
     private String name = "";
@@ -14,6 +15,7 @@ public class NVA {
     private String weapon = "";
     private String location = "";
     private String special = "";
+    private String Easter = "";
     private Ninja ninja = new Ninja();
     private Alien alien = new Alien();
 
@@ -64,18 +66,25 @@ public class NVA {
     }
 
     public void setLocationType () {
-        while (!((location.equalsIgnoreCase("forest") || location.equalsIgnoreCase("space")))) {
+        while (!((location.equalsIgnoreCase("forest") || location.equalsIgnoreCase("space") || location.equalsIgnoreCase("ocean")))) {
             System.out.println("Choose your location? [forest/space]");
+
             location = PlayNVA.scanner.nextLine();
             if (location.equalsIgnoreCase("space")) {
                 System.out.println("Aliens are the alpha masters of Space beware their raw strength!!!");
             } else if (location.equalsIgnoreCase("forest")) {
                 System.out.println("In the forest ninja can be anywhere....");
+            } else if (location.equalsIgnoreCase("ocean")) {
+                System.out.println("dunu...dunnununah...nahhhhhhhhhh");
             } else {
                 System.out.println("Choose again dipshit");
             }
         }
     }
+
+
+
+
 
     public void setSpecial() {
         while (!((special.equalsIgnoreCase("speed") || special.equalsIgnoreCase("power") || special.equalsIgnoreCase("pain")))) {
@@ -113,6 +122,7 @@ public class NVA {
             ninja.setPlayerWeapon("star");
             ninja.setBattleLocation(location);
             ninja.setSpecialGift(special);
+
         }
         System.out.println(" ");
         System.out.println("****************");
@@ -134,9 +144,11 @@ public class NVA {
         System.out.println("**********************************************");
         if(ninja.getHealth() > 0) {
             System.out.println(ninja.getPlayerName()+" Wins!!!");
+            System.out.println(alien.getPlayerName()+ " Loses :(");
             System.out.println("Health Remaining: "+ninja.getPlayerName());
         } else if(alien.getHealth() > 0) {
             System.out.println(alien.getPlayerName()+" Wins!!!");
+            System.out.println(ninja.getPlayerName()+" Loses :(");
             System.out.println("Health Remaining: "+alien.getPlayerName());
         } else {
             System.out.println("Everyone Died!!!");

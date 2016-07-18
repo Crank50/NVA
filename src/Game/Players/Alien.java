@@ -7,19 +7,19 @@ import Game.Util.RandInt;
  */
 public class Alien extends Player {
 
-    private int clawMaxDamage = 5;
+    private int clawMaxDamage = 10;
 
-    private int clawProtection = 2;
+    private int clawProtection = 6;
 
-    private int laserMaxDamage = 3;
+    private int laserMaxDamage = 8;
 
     private int laserProtection = 4;
 
     private int maxHitsPerRole = 4;
 
-    private int accuracy = 4;
+    private int accuracy = 5;
 
-    private int spaceRoids = 19;
+    private int spaceRoids = 2;
 
     public int alienDamageGivenCalculator() {
         int damage = 0;
@@ -43,8 +43,12 @@ public class Alien extends Player {
         if (rawDamageDealt > protection) {
             damage = rawDamageDealt - protection;
         }
+        if (getBattleLocation().equalsIgnoreCase("ocean") && getEasterAttack() == damage){
+            damage = rawDamageDealt + getEasterAttack();
+            System.out.println("You have been bit");
+        }
         this.removeHealth(damage);
-        return damage;
+        return damage + getEasterAttack();
 
     }
 

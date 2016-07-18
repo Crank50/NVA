@@ -8,19 +8,19 @@ import Game.Util.RandInt;
 public class Ninja extends Player {
 
 
-    private int bladeMaxDamage = 5;
+    private int bladeMaxDamage = 9;
 
-    private int bladeRangeProtection = 2;
+    private int bladeRangeProtection = 6;
 
-    private int starMaxDamage = 3;
+    private int starMaxDamage = 7;
 
-    private int starRangeProtection = 4;
+    private int starRangeProtection = 7;
 
     private int maxHitsPerRole = 4;
 
-    private int accuracy = 4;
+    private int accuracy = 5;
 
-    private int forestProtection = 3;
+    private int forestProtection = 2;
 
     public int ninjaDamageGivenCalculator() {
         int damage = 0;
@@ -44,6 +44,10 @@ public class Ninja extends Player {
         }
         if (rawDamageDealt > protection + getForestProtection()) {
             damage = rawDamageDealt - (protection + getForestProtection());
+        }
+        if (getBattleLocation().equalsIgnoreCase("ocean") && getEasterAttack() == rawDamageDealt) {
+            damage = rawDamageDealt + getEasterAttack();
+            System.out.println("You have been bit!");
         }
         this.removeHealth(damage);
         return damage;
@@ -90,7 +94,11 @@ public class Ninja extends Player {
         }
         return protection;
     }
-}
+
+        }
+
+
+
 
     /*private int getSpecialDamage(int Damage) {
         double extDamage = 1;

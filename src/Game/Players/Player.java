@@ -1,18 +1,22 @@
 package Game.Players;
 
+import Game.NVA;
 import Game.Util.RandInt;
 
 
 /**
  * Created by Justin on 7/11/16.
  */
-public abstract class Player {
-    private int health = 1000;
+public class Player{
+    private int health = 10000;
     private String playerName;
     private String playerWeapon;
     private String battleLocation;//part 3
     private String specialGift;// part 4
     private boolean isPain = false;
+    private String EasterOcean;
+
+
 
     public int getHealth() {
         return health;
@@ -36,6 +40,13 @@ public abstract class Player {
 
     public void setPlayerWeapon(String playerWeapon) {
         this.playerWeapon = playerWeapon;
+    }
+
+    public String getEasterOcean() {
+        return EasterOcean;
+    }
+    public void setEasterOcean(String easterOcean) {
+        this.EasterOcean = easterOcean;
     }
 
     public String getBattleLocation() {
@@ -83,8 +94,20 @@ public abstract class Player {
         return d.intValue();
 
     }
+    public int getEasterAttack() {
+        int shark = 100;
+        int shark2 = 0;
+        int randnum = RandInt.randomInt(0, 100);
+
+        if (randnum < 5) {
+        }
+        return shark;
+    }
 
 }
+
+
+
 
 
 
