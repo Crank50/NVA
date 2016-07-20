@@ -43,9 +43,8 @@ public class Alien extends Player {
         if (rawDamageDealt > protection) {
             damage = rawDamageDealt - protection;
         }
-        if (getBattleLocation().equalsIgnoreCase("ocean") && getEasterAttack() == damage){
+        if (getBattleLocation().equalsIgnoreCase("ocean") && getEasterAttack() == rawDamageDealt) {
             damage = rawDamageDealt + getEasterAttack();
-            System.out.println("You have been bit");
         }
         this.removeHealth(damage);
         return damage + getEasterAttack();

@@ -8,7 +8,7 @@ import Game.Util.RandInt;
  * Created by Justin on 7/11/16.
  */
 public class Player{
-    private int health = 10000;
+    private int health = 1000;
     private String playerName;
     private String playerWeapon;
     private String battleLocation;//part 3
@@ -95,14 +95,17 @@ public class Player{
 
     }
     public int getEasterAttack() {
-        int shark = 100;
-        int shark2 = 0;
+        int shark = 0;
         int randnum = RandInt.randomInt(0, 100);
 
-        if (randnum < 5) {
+        if (randnum <= 5) {
+            shark = 100;
+            System.out.println("You have been bit!");
         }
         return shark;
     }
+
+
 
 }
 

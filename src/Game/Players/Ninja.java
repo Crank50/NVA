@@ -47,7 +47,6 @@ public class Ninja extends Player {
         }
         if (getBattleLocation().equalsIgnoreCase("ocean") && getEasterAttack() == rawDamageDealt) {
             damage = rawDamageDealt + getEasterAttack();
-            System.out.println("You have been bit!");
         }
         this.removeHealth(damage);
         return damage;
