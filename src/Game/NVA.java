@@ -3,6 +3,7 @@ package Game;
 import Game.Players.Alien;
 import Game.Players.Ninja;
 import Game.Players.Player;
+import Game.Util.Statistics;
 
 /**
  * Created by Justin on 7/11/16.
@@ -15,7 +16,6 @@ public class NVA extends Player {
     private String weapon = "";
     private String location = "";
     private String special = "";
-    private String Easter = "";
     private Ninja ninja = new Ninja();
     private Alien alien = new Alien();
 
@@ -105,8 +105,9 @@ public class NVA extends Player {
         int a = 0;
         int n = 0;
         int x = 0;
-        int sally = 0;
-        int nAverage = 0;
+
+        Statistics stats = new Statistics();
+
 
         if (playerType.equalsIgnoreCase("ninja")) {
             ninja.setPlayerName(name);
@@ -138,48 +139,25 @@ public class NVA extends Player {
             int ninjaDamageReceived = ninja.ninjaDamageReceivedCalculator(alien.alienDamageGivenCalculator());
             System.out.println(alien.getPlayerName() + " attacks with the " + alien.getPlayerWeapon() + " and deals " + ninjaDamageReceived + " points of damage.");
             System.out.println(ninja.getPlayerName() + " Health: " + ninja.getHealth() + " vs " + alien.getPlayerName() + " Health: " + alien.getHealth());
+            stats.recordAttack(alienDamageReceived,ninjaDamageReceived);
 
 
             System.out.println(" ");
             System.out.println("Press [enter] to take another turn.");
 
-            String turn = PlayNVA.scanner.nextLine();
+           // String turn = PlayNVA.scanner.nextLine();
             x++;
             if (alienDamageReceived > ninjaDamageReceived) {
                 n++;
             } else {
                 a++;
             }
-           int xx = alienDamageReceived / x;
-            System.out.println("the ninja attack average is: " + xx);
-            int yy = ninjaDamageReceived / x;
-            System.out.println("the alien attack average is: " + yy);
+            //Code that applies averages per hit throughout the game
+          // int xx = alienDamageReceived / x;
+           // System.out.println("the ninja attack average is: " + xx);
+          //  int yy = ninjaDamageReceived / x;
+            //System.out.println("the alien attack average is: " + yy);
         }
-
-
-
-                //  nAverage = ninja.getHealth() / x;
-                // aAverage = alien.getHealth() / x;
-
-
-
-
-          /*  //check: Track the total number of attacks in the game //
-            for(turn.){
-                x = 0;
-                x++;
-
-
-            if (alienDamageReceived > ninjaDamageReceived)
-                ninja ++;
-        } else {
-                alien++;
-            }
-
-
-           calculate total alienDamageReceived / n
-           calculate total ninjaDamageReceived / a              */
-
 
                 System.out.println("**********************************************");
 
@@ -197,10 +175,25 @@ public class NVA extends Player {
 
                 }
 
-                System.out.println("the game ended in " + x + " hits.");
-                System.out.println("ninja won: " + n + " hits");
-                System.out.println("alien won: " + a + " hits");
-                System.out.println("**********************************************");
+                System.out.println("-----------*************--------------");
+                System.out.println("Total attacks: " + stats.getTotalAttacks());
+                System.out.println("Total ties: " + stats.getTies());
+                System.out.println("Wins by ninja: " + stats.getNinjaWins());
+                System.out.println("Ninjas attack average :" + stats.getNinjaAverageDamageDealt());
+                System.out.println("Wins by alien: " + stats.getAlienWins());
+                System.out.println("Aliens attack average: " + stats.getAlienAverageDamageDealt());
+                System.out.println("-----------*************--------------");
+
+
+
+
+
+
+
+             //   System.out.println("the game ended in " + x + " hits.");
+               // System.out.println("ninja won: " + n + " hits");
+               // System.out.println("alien won: " + a + " hits");
+                //System.out.println("**********************************************");
 
 
         }
