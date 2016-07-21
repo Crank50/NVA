@@ -143,7 +143,7 @@ public class NVA extends Player {
 
 
             System.out.println(" ");
-            System.out.println("Press [enter] to take another turn.");
+          //  System.out.println("Press [enter] to take another turn.");
 
            // String turn = PlayNVA.scanner.nextLine();
             x++;
